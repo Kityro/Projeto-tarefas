@@ -1,0 +1,368 @@
+/* ===== Reset: zera espaçamentos e define a fonte padrão ===== */
+* {
+    box-sizing: border-box;              /* padding e borda ficam dentro da largura definida */
+    margin: 0;                           /* remove a margem padrão do navegador */
+    padding: 0;                          /* remove o espaçamento interno padrão */
+    font-family: 'Inter', sans-serif;    /* fonte Inter; sans-serif é a reserva */
+}
+
+/* Esconde qualquer elemento com a classe hidden. !important garante que nada sobrescreva isso */
+.hidden { display: none !important; }
+
+/* ===== Página ===== */
+body {
+    background-color: #111111;  /* fundo quase preto */
+    color: #ffffff;             /* texto branco por padrão */
+    min-height: 100vh;          /* ocupa pelo menos a altura da janela */
+}
+
+/* ===== Cabeçalho ===== */
+.app-header {
+    background-color: #161616;       /* fundo levemente mais claro que a página */
+    padding: 10px 20px;              /* espaço interno: 10px em cima e embaixo, 20px nas laterais */
+    border-bottom: 1px solid #222222; /* linha separando o cabeçalho do conteúdo */
+}
+.brand-row {
+    display: flex;          /* logo e nome lado a lado */
+    align-items: center;    /* centraliza na vertical */
+    gap: 14px;              /* espaço entre logo e nome */
+}
+.logo-box-sm {
+    width: 52px;                  /* largura do quadrado */
+    height: 52px;                 /* altura do quadrado */
+    border: 2.5px solid #ef4444;  /* borda vermelha */
+    border-radius: 14px;          /* cantos arredondados */
+    display: flex;                /* centraliza a letra dentro */
+    align-items: center;          /* centraliza na vertical */
+    justify-content: center;      /* centraliza na horizontal */
+    flex-shrink: 0;               /* impede que o quadrado encolha */
+}
+.logo-box-sm span {
+    color: #ef4444;      /* letra α vermelha */
+    font-size: 32px;     /* tamanho da letra */
+    font-weight: 500;    /* peso médio */
+}
+.brand {
+    font-size: 22px;     /* tamanho do nome */
+    font-weight: 800;    /* negrito extra */
+}
+.brand .alpha { color: #ffffff; }  /* "Alpha" em branco */
+.brand .code  { color: #ef4444; }  /* "Code" em vermelho */
+
+.header-bottom {
+    display: flex;                   /* frase e botão lado a lado */
+    align-items: center;             /* centraliza na vertical */
+    justify-content: space-between;  /* um em cada extremidade */
+    gap: 12px;                       /* espaço mínimo entre os dois */
+    margin-top: 14px;                /* espaço acima da linha */
+}
+.app-subtitle {
+    color: #888888;      /* cinza */
+    font-size: 14px;     /* tamanho do texto */
+}
+
+/* ===== Rodapé fixo com o botão Sair ===== */
+.app-footer {
+    position: fixed;  /* fica fixo na tela, mesmo ao rolar */
+    left: 20px;       /* distância da borda esquerda */
+    bottom: 20px;     /* distância da borda inferior */
+    z-index: 5;       /* fica por cima do conteúdo */
+}
+.logout {
+    display: inline-block;        /* o link se comporta como botão */
+    background-color: #ef4444;    /* fundo vermelho */
+    color: #ffffff;               /* texto branco */
+    border: none;                 /* sem borda */
+    border-radius: 12px;          /* cantos arredondados */
+    padding: 12px 18px;           /* espaço interno */
+    font-size: 14px;              /* tamanho do texto */
+    font-weight: 700;             /* negrito */
+    text-decoration: none;        /* sem sublinhado */
+    white-space: nowrap;          /* o texto não quebra em duas linhas */
+}
+.logout:hover { background-color: #dc2626; }  /* vermelho mais escuro ao passar o mouse */
+
+/* ===== Conteúdo principal ===== */
+.container {
+    max-width: 900px;        /* largura máxima do conteúdo */
+    margin: 0 auto;          /* centraliza na horizontal */
+    padding: 24px 20px 80px; /* 80px embaixo para a lista não ficar atrás do botão Sair */
+}
+
+/* ===== Contadores ===== */
+.stats-grid {
+    display: grid;                       /* organiza os cartões em grade */
+    grid-template-columns: 1fr 1fr;      /* duas colunas em telas pequenas */
+    gap: 14px;                           /* espaço entre os cartões */
+    margin-bottom: 28px;                 /* espaço abaixo da grade */
+}
+.stat-card {
+    background-color: #1b1b1b;     /* fundo do cartão */
+    border: 1px solid #2a2a2a;     /* borda fina */
+    border-radius: 14px;           /* cantos arredondados */
+    padding: 20px;                 /* espaço interno */
+    display: flex;                 /* organiza rótulo e número */
+    flex-direction: column;        /* na vertical */
+    justify-content: space-between;/* rótulo em cima, número embaixo */
+    gap: 10px;                     /* espaço entre rótulo e número */
+    min-height: 100px;             /* altura mínima, igual para todos os cartões */
+}
+.stat-label {
+    color: #888888;             /* cinza */
+    font-size: 12px;            /* texto pequeno */
+    text-transform: uppercase;  /* letras maiúsculas */
+    letter-spacing: 0.3px;      /* espaço leve entre as letras */
+    white-space: nowrap;        /* o rótulo fica em uma linha só */
+}
+.stat-number {
+    font-size: 32px;   /* número grande */
+    font-weight: 800;  /* negrito extra */
+}
+.stat-number.late { color: #ef4444; }  /* contador de atrasadas em vermelho */
+
+/* Em telas de 720px ou mais, os cinco cartões ficam numa linha só */
+@media (min-width: 720px) {
+    .stats-grid { grid-template-columns: repeat(5, 1fr); }  /* cinco colunas iguais */
+}
+
+/* ===== Botões de status ===== */
+.status-botoes {
+    display: grid;                                       /* organiza os botões em grade */
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* colunas de no mínimo 140px */
+    gap: 10px;                                           /* espaço entre os botões */
+    margin-bottom: 16px;                                 /* espaço abaixo da linha */
+}
+.status-btn {
+    display: flex;                   /* rótulo e contagem lado a lado */
+    align-items: center;             /* centraliza na vertical */
+    justify-content: space-between;  /* rótulo à esquerda, contagem à direita */
+    background-color: #1b1b1b;       /* fundo escuro */
+    color: #cccccc;                  /* texto cinza claro */
+    border: 1px solid #2a2a2a;       /* borda fina */
+    border-radius: 10px;             /* cantos arredondados */
+    padding: 12px 14px;              /* espaço interno */
+    font-size: 13px;                 /* tamanho do texto */
+    font-weight: 500;                /* peso médio */
+    cursor: pointer;                 /* cursor de mão */
+}
+.status-btn:hover { border-color: #444444; color: #ffffff; }  /* destaca ao passar o mouse */
+.status-btn.late:not(.active) { color: #ef4444; }            /* "Atrasadas" em vermelho quando não está aberta */
+.status-btn.active {
+    background-color: #ef4444;  /* fundo vermelho quando o painel está aberto */
+    border-color: #ef4444;      /* borda da mesma cor */
+    color: #ffffff;             /* texto branco */
+}
+.contagem {
+    font-size: 12px;    /* texto pequeno */
+    color: inherit;     /* usa a mesma cor do botão */
+}
+
+/* ===== Painel que abre abaixo dos botões ===== */
+.painel {
+    background-color: #1b1b1b;   /* fundo do painel */
+    border: 1px solid #2a2a2a;   /* borda fina */
+    border-radius: 12px;         /* cantos arredondados */
+    padding: 16px;               /* espaço interno */
+    margin-bottom: 20px;         /* espaço abaixo */
+}
+.painel-titulo {
+    font-size: 16px;     /* tamanho do título */
+    font-weight: 600;    /* negrito médio */
+    margin-bottom: 12px; /* espaço abaixo do título */
+}
+
+/* ===== Lista de tarefas ===== */
+.task-list { list-style: none; }  /* remove as bolinhas da lista */
+.task {
+    display: flex;                   /* nome e botão lado a lado */
+    align-items: center;             /* centraliza na vertical */
+    gap: 12px;                       /* espaço entre nome e botão */
+    background-color: #161616;       /* fundo do item */
+    border: 1px solid #2a2a2a;       /* borda fina */
+    border-radius: 10px;             /* cantos arredondados */
+    padding: 12px 14px;              /* espaço interno */
+    margin-bottom: 8px;              /* espaço entre um item e outro */
+}
+.task-text {
+    flex: 1;                /* o nome ocupa o espaço que sobrar */
+    font-size: 14px;        /* tamanho do texto */
+    color: #ffffff;         /* texto branco */
+}
+.task-actions {
+    display: flex;  /* botões lado a lado */
+    gap: 6px;       /* espaço entre eles */
+}
+
+/* Botões pequenos, como Visualizar, Editar e Excluir */
+.icon-btn {
+    background: none;             /* sem fundo */
+    border: 1px solid #333333;    /* borda cinza */
+    border-radius: 8px;           /* cantos arredondados */
+    color: #888888;               /* texto cinza */
+    padding: 6px 12px;            /* espaço interno */
+    font-size: 13px;              /* tamanho do texto */
+    cursor: pointer;              /* cursor de mão */
+}
+.icon-btn:hover { color: #ffffff; border-color: #555555; }  /* clareia ao passar o mouse */
+.icon-del:hover { color: #ef4444; border-color: #ef4444; }  /* fica vermelho no botão Excluir */
+
+/* Mensagem quando a lista está vazia */
+.empty {
+    color: #666666;          /* cinza escuro */
+    text-align: center;      /* centralizado */
+    padding: 24px 0;         /* espaço acima e abaixo */
+    font-size: 14px;         /* tamanho do texto */
+    list-style: none;        /* sem bolinha */
+}
+
+/* ===== Selos de status (Pendente, Em andamento, Concluída) ===== */
+.badge {
+    font-size: 12px;           /* texto pequeno */
+    padding: 4px 10px;         /* espaço interno */
+    border-radius: 999px;      /* formato de pílula */
+    white-space: nowrap;       /* o texto não quebra */
+}
+.badge-pendente  { background-color: #3a2e10; color: #facc15; }  /* amarelo */
+.badge-andamento { background-color: #13263d; color: #60a5fa; }  /* azul */
+.badge-concluida { background-color: #12301f; color: #4ade80; }  /* verde */
+
+/* ===== Botões principais ===== */
+.btn-new {
+    background-color: #ef4444;   /* fundo vermelho */
+    color: #ffffff;              /* texto branco */
+    border: none;                /* sem borda */
+    border-radius: 12px;         /* cantos arredondados */
+    padding: 12px 18px;          /* espaço interno */
+    font-size: 14px;             /* tamanho do texto */
+    font-weight: 700;            /* negrito */
+    white-space: nowrap;         /* o texto não quebra */
+    cursor: pointer;             /* cursor de mão */
+}
+.btn-new:hover { background-color: #dc2626; }  /* vermelho mais escuro ao passar o mouse */
+
+.btn-ghost {
+    background: none;            /* sem fundo */
+    border: 1px solid #333333;   /* borda cinza */
+    border-radius: 10px;         /* cantos arredondados */
+    color: #cccccc;              /* texto cinza claro */
+    padding: 12px 18px;          /* espaço interno */
+    font-size: 14px;             /* tamanho do texto */
+    cursor: pointer;             /* cursor de mão */
+}
+.btn-ghost:hover { color: #ffffff; border-color: #555555; }  /* clareia ao passar o mouse */
+
+.btn-danger {
+    background-color: #ef4444;   /* fundo vermelho */
+    color: #ffffff;              /* texto branco */
+    border: 1px solid #ef4444;   /* borda da mesma cor */
+    border-radius: 10px;         /* cantos arredondados */
+    padding: 12px 18px;          /* espaço interno */
+    font-size: 14px;             /* tamanho do texto */
+    font-weight: 700;            /* negrito */
+    cursor: pointer;             /* cursor de mão */
+}
+.btn-danger:hover { background-color: #dc2626; border-color: #dc2626; }  /* vermelho mais escuro */
+
+/* ===== Modais ===== */
+.modal-overlay {
+    position: fixed;                      /* cobre a tela inteira */
+    inset: 0;                             /* ocupa de todas as bordas */
+    background-color: rgba(0, 0, 0, 0.7); /* fundo preto semitransparente */
+    display: flex;                        /* centraliza a caixa do modal */
+    align-items: center;                  /* centraliza na vertical */
+    justify-content: center;              /* centraliza na horizontal */
+    padding: 20px;                        /* espaço nas bordas em telas pequenas */
+    z-index: 10;                          /* fica por cima de todo o resto */
+}
+.modal {
+    background-color: #191919;   /* fundo da caixa */
+    border: 1px solid #2a2a2a;   /* borda fina */
+    border-radius: 16px;         /* cantos arredondados */
+    padding: 28px;               /* espaço interno */
+    width: 100%;                 /* ocupa a largura disponível */
+    max-width: 480px;            /* nunca passa de 480px */
+}
+.modal-title {
+    font-size: 20px;     /* tamanho do título */
+    font-weight: 700;    /* negrito */
+    margin-bottom: 8px;  /* espaço abaixo */
+}
+.modal-text {
+    color: #999999;      /* cinza */
+    font-size: 14px;     /* tamanho do texto */
+    line-height: 1.5;    /* espaço entre as linhas */
+}
+.modal label {
+    display: block;          /* cada rótulo ocupa a linha inteira */
+    color: #bbbbbb;          /* cinza claro */
+    font-size: 13px;         /* tamanho do texto */
+    font-weight: 500;        /* peso médio */
+    margin: 16px 0 6px;      /* espaço acima e abaixo */
+}
+.field {
+    width: 100%;                 /* largura total */
+    background-color: #1f1f1f;   /* fundo escuro */
+    border: 1px solid #2a2a2a;   /* borda fina */
+    border-radius: 10px;         /* cantos arredondados */
+    color: #ffffff;              /* texto branco */
+    padding: 12px 14px;          /* espaço interno */
+    font-size: 14px;             /* tamanho do texto */
+    outline: none;               /* remove o contorno azul padrão */
+    color-scheme: dark;          /* faz o seletor de data e as opções ficarem escuros */
+}
+.field:focus {
+    border-color: #444444;       /* borda mais clara quando selecionado */
+    background-color: #242424;   /* fundo um pouco mais claro quando selecionado */
+}
+textarea.field { resize: vertical; }  /* permite aumentar a altura só para baixo */
+
+.row-2 {
+    display: grid;                      /* organiza em grade */
+    grid-template-columns: 1fr 1fr;     /* duas colunas iguais */
+    gap: 12px;                          /* espaço entre elas */
+}
+.modal-actions {
+    display: flex;               /* botões lado a lado */
+    justify-content: flex-end;   /* alinhados à direita */
+    gap: 10px;                   /* espaço entre eles */
+    margin-top: 24px;            /* espaço acima dos botões */
+}
+
+/* ===== Tela de detalhes da tarefa ===== */
+.detalhe {
+    list-style: none;                 /* sem bolinha */
+    background-color: #161616;        /* fundo do cartão */
+    border: 1px solid #2a2a2a;        /* borda fina */
+    border-radius: 12px;              /* cantos arredondados */
+    padding: 18px;                    /* espaço interno */
+}
+.detalhe-titulo {
+    font-size: 18px;     /* tamanho do título */
+    font-weight: 600;    /* negrito médio */
+    margin-bottom: 8px;  /* espaço abaixo */
+}
+.detalhe-meta {
+    display: flex;             /* selo e prazo lado a lado */
+    align-items: center;       /* centraliza na vertical */
+    flex-wrap: wrap;           /* quebra para a linha de baixo em telas pequenas */
+    gap: 10px;                 /* espaço entre eles */
+    font-size: 12px;           /* texto pequeno */
+    color: #888888;            /* cinza */
+    margin-bottom: 18px;       /* espaço abaixo */
+}
+.detalhe-meta .late { color: #ef4444; }  /* prazo vencido em vermelho */
+.detalhe-rotulo {
+    font-size: 12px;     /* texto pequeno */
+    color: #888888;      /* cinza */
+    margin-bottom: 6px;  /* espaço abaixo */
+}
+.detalhe-texto {
+    font-size: 14px;          /* tamanho do texto */
+    line-height: 1.6;         /* espaço entre as linhas */
+    color: #dddddd;           /* cinza claro */
+    white-space: pre-line;    /* respeita as quebras de linha da descrição */
+}
+.detalhe .task-actions {
+    justify-content: flex-end;  /* botões alinhados à direita */
+    margin-top: 18px;           /* espaço acima dos botões */
+}

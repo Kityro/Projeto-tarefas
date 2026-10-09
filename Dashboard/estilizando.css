@@ -1,0 +1,190 @@
+/* ===== Reset: zera espaçamentos e define a fonte padrão ===== */
+* {
+    box-sizing: border-box;              /* padding e borda ficam dentro da largura definida */
+    margin: 0;                           /* remove a margem padrão do navegador */
+    padding: 0;                          /* remove o espaçamento interno padrão */
+    font-family: 'Inter', sans-serif;    /* fonte Inter; sans-serif é a reserva */
+}
+
+/* ===== Página: centraliza o cartão na tela ===== */
+body {
+    background-color: black;   /* fundo preto */
+    color: white;              /* texto padrão branco */
+    display: flex;             /* ativa o flexbox para centralizar */
+    align-items: center;       /* centraliza na vertical */
+    justify-content: center;   /* centraliza na horizontal */
+    min-height: 100vh;         /* ocupa pelo menos a altura da janela */
+}
+
+/* ===== Cartão de login e cadastro ===== */
+.login-card {
+    background-color: #191919;   /* fundo do cartão */
+    border-radius: 16px;         /* cantos arredondados */
+    padding: 48px 40px;          /* espaço interno: 48px em cima e embaixo, 40px nas laterais */
+    width: 100%;                 /* ocupa a largura disponível */
+    max-width: 440px;            /* nunca passa de 440px */
+    display: flex;               /* organiza os filhos com flexbox */
+    flex-direction: column;      /* empilha os filhos na vertical */
+    align-items: center;         /* centraliza os filhos na horizontal */
+    border: 1px solid #222222;   /* borda fina e discreta */
+}
+
+/* ===== Título "Alpha" e "Code" ===== */
+.brand-title {
+    text-align: center;   /* centraliza o texto */
+    font-size: 55px;      /* tamanho grande */
+    font-weight: 800;     /* negrito extra */
+    margin-bottom: 12px;  /* espaço abaixo do título */
+}
+.brand-title .alpha {
+    color: white;         /* "Alpha" em branco */
+    display: block;       /* ocupa a linha inteira */
+}
+.brand-title .code {
+    color: #ef4444;       /* "Code" em vermelho */
+    display: block;       /* ocupa a linha inteira, abaixo de "Alpha" */
+}
+
+/* ===== Subtítulo ===== */
+.subtitle {
+    color: #888888;        /* cinza */
+    font-size: 16px;       /* tamanho do texto */
+    margin-bottom: 28px;   /* espaço abaixo */
+    text-align: center;    /* centralizado */
+}
+
+/* ===== Formulário ===== */
+form {
+    width: 100%;           /* ocupa toda a largura do cartão */
+}
+
+/* ===== Rótulos dos campos ===== */
+label {
+    display: block;        /* cada rótulo ocupa a linha inteira */
+    color: #bbbbbb;        /* cinza claro */
+    font-size: 16px;       /* tamanho do texto */
+    font-weight: 500;      /* peso médio */
+    margin-bottom: 2px;    /* espaço pequeno até o campo */
+}
+
+/* ===== Campos de texto ===== */
+input {
+    display: block;              /* cada campo ocupa a linha inteira */
+    width: 100%;                 /* largura total */
+    background-color: #1f1f1f;   /* fundo escuro */
+    border: 1px solid #1f1f1f;   /* borda da mesma cor do fundo, para não aparecer */
+    border-radius: 10px;         /* cantos arredondados */
+    color: #ffffff;              /* cor do texto digitado */
+    padding: 16px;               /* espaço interno */
+    font-size: 15px;             /* tamanho do texto */
+    margin-bottom: 24px;         /* espaço até o próximo campo */
+    outline: none;               /* remove o contorno azul padrão ao clicar */
+}
+input:focus {
+    border-color: #333333;       /* borda visível quando o campo está selecionado */
+    background-color: #242424;   /* fundo um pouco mais claro quando selecionado */
+}
+
+/* ===== Botão principal (CRIAR CONTA e ENTRAR) ===== */
+button {
+    width: 100%;                 /* largura total */
+    background-color: #ffffff;   /* fundo branco */
+    color: #000000;              /* texto preto */
+    border: none;                /* sem borda */
+    border-radius: 10px;         /* cantos arredondados */
+    padding: 16px;               /* espaço interno */
+    font-size: 15px;             /* tamanho do texto */
+    font-weight: 700;            /* negrito */
+    cursor: pointer;             /* cursor de mão ao passar por cima */
+}
+button:hover {
+    background-color: #f0f0f0;   /* levemente mais escuro ao passar o mouse */
+}
+
+/* ===== Rodapé com o copyright ===== */
+.copyright {
+    color: #555555;      /* cinza escuro */
+    font-size: 12px;     /* texto pequeno */
+    text-align: center;  /* centralizado */
+    margin-top: 32px;    /* espaço acima */
+}
+
+/* ===== Título "Criar Conta" (página de cadastro) ===== */
+.page-title {
+    font-size: 26px;     /* tamanho do título */
+    font-weight: 700;    /* negrito */
+    text-align: center;  /* centralizado */
+    margin-bottom: 8px;  /* espaço abaixo */
+}
+
+/* ===== Texto "Já tem conta? Faça login" ===== */
+.switch-text {
+    color: #888888;      /* cinza */
+    font-size: 14px;     /* tamanho do texto */
+    text-align: center;  /* centralizado */
+    margin-top: 28px;    /* espaço acima */
+}
+.switch-text a {
+    color: #ef4444;      /* link vermelho */
+    font-weight: 600;    /* negrito médio */
+    text-decoration: none; /* sem sublinhado */
+}
+.switch-text a:hover {
+    text-decoration: underline; /* sublinha ao passar o mouse */
+}
+
+/* ===== Termos de uso ===== */
+.terms {
+    color: #666666;      /* cinza */
+    font-size: 12px;     /* texto pequeno */
+    text-align: center;  /* centralizado */
+    margin-top: 24px;    /* espaço acima */
+    line-height: 1.6;    /* espaço entre as linhas */
+}
+.terms a {
+    color: #ef4444;      /* links vermelhos */
+    font-weight: 600;    /* negrito médio */
+    text-decoration: none; /* sem sublinhado */
+}
+
+/* ===== Abas Entrar / Cadastrar ===== */
+.tabs {
+    display: flex;               /* abas lado a lado */
+    width: 100%;                 /* ocupa toda a largura do cartão */
+    background-color: #1f1f1f;   /* fundo da barra de abas */
+    border-radius: 10px;         /* cantos arredondados */
+    padding: 4px;                /* espaço interno, para a aba ativa não encostar na borda */
+    margin-bottom: 28px;         /* espaço abaixo */
+}
+.tab {
+    flex: 1;                     /* cada aba ocupa metade da barra */
+    text-align: center;          /* texto centralizado */
+    padding: 12px;               /* espaço interno da aba */
+    border-radius: 8px;          /* cantos arredondados */
+    color: #888888;              /* cinza, aba inativa */
+    text-decoration: none;       /* sem sublinhado no link */
+    font-size: 14px;             /* tamanho do texto */
+    font-weight: 600;            /* negrito médio */
+}
+.tab:hover {
+    color: #ffffff;              /* fica branco ao passar o mouse */
+}
+.tab.active {
+    background-color: #2a2a2a;   /* fundo destacado da aba atual */
+    color: #ffffff;              /* texto branco */
+}
+/* Mensagem de erro em vermelho, nos formulários de login e cadastro */
+.erro {
+    color: #ef4444;        /* texto vermelho */
+    font-size: 13px;       /* tamanho pequeno */
+    text-align: center;    /* centralizado */
+    margin-bottom: 12px;   /* espaço abaixo */
+}
+
+/* Mensagem de sucesso em verde, por exemplo "Conta criada!" */
+.aviso {
+    color: #4ade80;        /* texto verde */
+    font-size: 13px;       /* tamanho pequeno */
+    text-align: center;    /* centralizado */
+    margin-bottom: 12px;   /* espaço abaixo */
+}

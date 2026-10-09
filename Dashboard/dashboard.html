@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<!-- Declara que o arquivo é HTML5 -->
+<html lang="pt-br">
+<!-- Página em português do Brasil -->
+<head>
+    <!-- Informações sobre a página, que não aparecem na tela -->
+    <meta charset="UTF-8">
+    <!-- Codificação de caracteres, para acentos aparecerem certos -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ajusta a página à largura da tela do celular -->
+    <title>Alpha Code - Dashboard</title>
+    <!-- Texto que aparece na aba do navegador -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Adianta a conexão com o servidor de fontes do Google -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Adianta a conexão com o servidor onde ficam os arquivos de fonte -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Carrega a fonte Inter nos pesos 400 a 800 -->
+    <link rel="stylesheet" href="dashboard.css">
+    <!-- Liga este HTML ao CSS do dashboard -->
+</head>
+<body>
+    <!-- Tudo que aparece na tela fica dentro do body -->
+
+    <header class="app-header">
+        <!-- Cabeçalho com a marca, a frase e o botão Nova Tarefa -->
+        <div class="brand-row">
+            <!-- Linha com o logo e o nome -->
+            <div class="logo-box-sm"><span>&alpha;</span></div>
+            <!-- Quadrado vermelho com a letra α -->
+            <div class="brand"><span class="alpha">Alpha</span> <span class="code">Code</span></div>
+            <!-- Nome do sistema, com cores diferentes em cada palavra -->
+        </div>
+        <div class="header-bottom">
+            <!-- Linha com a frase e o botão -->
+            <p class="app-subtitle">Gerenciador de Tarefas Profissional</p>
+            <!-- Frase descritiva -->
+            <button type="button" class="btn-new" id="btn-nova">+ Nova Tarefa</button>
+            <!-- Abre o modal para criar uma tarefa -->
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Conteúdo principal, centralizado -->
+
+        <section class="stats-grid">
+            <!-- Grade com os cinco contadores -->
+            <div class="stat-card">
+                <!-- Cartão do contador Total -->
+                <span class="stat-label">Total</span>
+                <!-- Nome do contador -->
+                <span class="stat-number" id="s-total">0</span>
+                <!-- Valor preenchido pelo JavaScript -->
+            </div>
+            <div class="stat-card">
+                <!-- Cartão do contador Pendentes -->
+                <span class="stat-label">Pendentes</span>
+                <!-- Nome do contador -->
+                <span class="stat-number" id="s-pendentes">0</span>
+                <!-- Valor preenchido pelo JavaScript -->
+            </div>
+            <div class="stat-card">
+                <!-- Cartão do contador Em andamento -->
+                <span class="stat-label">Em andamento</span>
+                <!-- Nome do contador -->
+                <span class="stat-number" id="s-andamento">0</span>
+                <!-- Valor preenchido pelo JavaScript -->
+            </div>
+            <div class="stat-card">
+                <!-- Cartão do contador Concluídas -->
+                <span class="stat-label">Concluídas</span>
+                <!-- Nome do contador -->
+                <span class="stat-number" id="s-concluidas">0</span>
+                <!-- Valor preenchido pelo JavaScript -->
+            </div>
+            <div class="stat-card">
+                <!-- Cartão do contador Atrasadas -->
+                <span class="stat-label">Atrasadas</span>
+                <!-- Nome do contador -->
+                <span class="stat-number late" id="s-atrasadas">0</span>
+                <!-- Em vermelho por causa da classe late -->
+            </div>
+        </section>
+
+        <nav class="status-botoes">
+            <!-- Linha de botões de status -->
+            <button type="button" class="status-btn" data-painel="pendente">
+                <!-- data-painel diz qual lista o botão abre -->
+                <span>Pendente</span>
+                <!-- Nome do botão -->
+                <span class="contagem">0</span>
+                <!-- Quantidade, preenchida pelo JavaScript -->
+            </button>
+            <button type="button" class="status-btn" data-painel="andamento">
+                <!-- Abre a lista de tarefas em andamento -->
+                <span>Em andamento</span>
+                <!-- Nome do botão -->
+                <span class="contagem">0</span>
+                <!-- Quantidade, preenchida pelo JavaScript -->
+            </button>
+            <button type="button" class="status-btn" data-painel="concluida">
+                <!-- Abre a lista de tarefas concluídas -->
+                <span>Concluída</span>
+                <!-- Nome do botão -->
+                <span class="contagem">0</span>
+                <!-- Quantidade, preenchida pelo JavaScript -->
+            </button>
+            <button type="button" class="status-btn late" data-painel="atrasada">
+                <!-- Abre a lista de tarefas atrasadas; late deixa o texto vermelho -->
+                <span>Atrasadas</span>
+                <!-- Nome do botão -->
+                <span class="contagem">0</span>
+                <!-- Quantidade, preenchida pelo JavaScript -->
+            </button>
+        </nav>
+
+        <section class="painel hidden" id="painel">
+            <!-- Área que aparece abaixo dos botões; começa escondida -->
+            <h2 class="painel-titulo" id="painel-titulo"></h2>
+            <!-- Título do painel, preenchido pelo JavaScript -->
+            <ul class="task-list" id="lista"></ul>
+            <!-- Lista de tarefas ou tela de detalhes, preenchida pelo JavaScript -->
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <!-- Rodapé fixo no canto inferior esquerdo -->
+        <a href="projeto.html" class="logout" id="btn-sair">Sair</a>
+        <!-- Volta para a tela de login -->
+    </footer>
+
+    <div class="modal-overlay hidden" id="modal">
+        <!-- Fundo escuro do modal de criar e editar; começa escondido -->
+        <div class="modal">
+            <!-- Caixa do modal -->
+            <h2 class="modal-title" id="modal-titulo">Nova tarefa</h2>
+            <!-- Título do modal; muda para "Editar tarefa" quando necessário -->
+
+            <form id="form">
+                <!-- Formulário de criar e editar tarefa -->
+                <input type="hidden" id="f-id">
+                <!-- Campo invisível que guarda o id da tarefa ao editar; vazio ao criar -->
+
+                <label for="f-titulo">Título</label>
+                <!-- Rótulo do campo de título -->
+                <input type="text" id="f-titulo" class="field" placeholder="Ex.: Revisar página de login" required>
+                <!-- Título da tarefa; obrigatório -->
+
+                <label for="f-descricao">Descrição</label>
+                <!-- Rótulo do campo de descrição -->
+                <textarea id="f-descricao" class="field" rows="3" placeholder="Detalhes da tarefa"></textarea>
+                <!-- Texto longo com o que precisa ser feito; rows define 3 linhas de altura -->
+
+                <div class="row-2">
+                    <!-- Duas colunas lado a lado -->
+                    <div>
+                        <!-- Coluna da esquerda -->
+                        <label for="f-vencimento">Vencimento</label>
+                        <!-- Rótulo da data -->
+                        <input type="date" id="f-vencimento" class="field">
+                        <!-- Seletor de data; pode ficar vazio -->
+                    </div>
+                    <div>
+                        <!-- Coluna da direita -->
+                        <label for="f-status">Status</label>
+                        <!-- Rótulo do status -->
+                        <select id="f-status" class="field">
+                            <!-- Lista de opções de status -->
+                            <option value="pendente">Pendente</option>
+                            <!-- Opção padrão ao criar -->
+                            <option value="andamento">Em andamento</option>
+                            <!-- Tarefa em execução -->
+                            <option value="concluida">Concluída</option>
+                            <!-- Tarefa finalizada -->
+                        </select>
+                    </div>
+                </div>
+
+                <div class="modal-actions">
+                    <!-- Linha com os botões do modal, alinhados à direita -->
+                    <button type="button" class="btn-ghost" id="btn-cancelar">Cancelar</button>
+                    <!-- Fecha o modal sem salvar -->
+                    <button type="submit" class="btn-new">Salvar</button>
+                    <!-- Envia o formulário e salva a tarefa -->
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal-overlay hidden" id="modal-excluir">
+        <!-- Modal de confirmação de exclusão; começa escondido -->
+        <div class="modal">
+            <!-- Caixa do modal -->
+            <h2 class="modal-title">Excluir tarefa</h2>
+            <!-- Título do modal -->
+            <p class="modal-text">Essa ação não pode ser desfeita.</p>
+            <!-- Aviso antes de excluir -->
+            <div class="modal-actions">
+                <!-- Botões alinhados à direita -->
+                <button type="button" class="btn-ghost" id="excluir-cancelar">Cancelar</button>
+                <!-- Fecha sem excluir -->
+                <button type="button" class="btn-danger" id="excluir-confirmar">Excluir</button>
+                <!-- Exclui a tarefa de vez -->
+            </div>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+    <!-- Carrega o JavaScript no fim, depois que os elementos da página já existem -->
+</body>
+</html>

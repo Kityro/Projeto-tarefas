@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <!-- Informações da página, que não aparecem na tela -->
+    <meta charset="UTF-8">
+    <!-- Codificação de caracteres -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ajusta a página à largura do celular -->
+    <title>Alpha Code - Cadastro</title>
+    <!-- Texto da aba do navegador -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Adianta a conexão com o servidor de fontes -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Adianta a conexão com o servidor dos arquivos de fonte -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Carrega a fonte Inter -->
+    <link rel="stylesheet" href="estilizando.css">
+    <!-- Liga o HTML ao arquivo de estilo -->
+</head>
+<body>
+    <!-- Tudo que aparece na tela fica aqui -->
+    <div class="login-card">
+        <!-- Cartão central -->
+        <div class="brand-title">
+            <!-- Título da marca -->
+            <span class="alpha">Alpha</span>
+            <!-- Primeira linha, em branco -->
+            <span class="code">Code</span>
+            <!-- Segunda linha, em vermelho -->
+        </div>
+
+        <div class="subtitle">Junte-se a milhares de usuários</div>
+        <!-- Frase abaixo do título -->
+
+        <nav class="tabs">
+            <!-- Abas para trocar entre login e cadastro -->
+            <a href="projeto.html" class="tab">Entrar</a>
+            <!-- Leva para o login -->
+            <a href="cadastro.html" class="tab active">Cadastrar</a>
+            <!-- Aba atual -->
+        </nav>
+
+        <h2 class="page-title">Criar Conta</h2>
+        <!-- Título da página -->
+
+        <!-- O formulário não tem action: quem cuida do envio é o auth.js -->
+        <form id="form-cadastro">
+            <!-- Formulário de cadastro -->
+
+            <label for="nome">Nome Completo</label>
+            <!-- Rótulo do campo de nome -->
+            <input type="text" id="nome" placeholder="Seu nome completo" required>
+            <!-- Campo de nome; obrigatório -->
+
+            <label for="email">Email</label>
+            <!-- Rótulo do campo de e-mail -->
+            <input type="email" id="email" placeholder="seu@email.com" required
+                   pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
+                   title="Digite um e-mail válido, como nome@dominio.com">
+            <!-- Campo de e-mail; o pattern exige o formato nome@dominio.com -->
+
+            <label for="senha">Senha</label>
+            <!-- Rótulo do campo de senha -->
+            <input type="password" id="senha" placeholder="Crie uma senha forte" required minlength="6">
+            <!-- Campo de senha; minlength exige pelo menos 6 caracteres -->
+
+            <p id="erro" class="erro" hidden></p>
+            <!-- Mensagem de erro, por exemplo "Já existe uma conta com este e-mail." -->
+
+            <button type="submit">CRIAR CONTA</button>
+            <!-- Envia o formulário -->
+        </form>
+
+        <div class="switch-text">
+            <!-- Texto para quem já tem conta -->
+            Já tem conta? <a href="projeto.html">Faça login</a>
+            <!-- Leva para o login -->
+        </div>
+
+        <div class="terms">
+            <!-- Aviso dos termos de uso -->
+            Ao criar uma conta você concorda com nossos<br>
+            <!-- Quebra de linha -->
+            <a href="#">Termos de Serviço</a> e <a href="#">Política de Privacidade</a>
+            <!-- Links ainda sem página de destino -->
+        </div>
+
+        <div class="copyright">
+            <!-- Rodapé -->
+            &copy; 2024 Alpha Code. Todos os direitos reservados.
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <!-- Carrega a lógica de login e cadastro -->
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <!-- Informações da página, que não aparecem na tela -->
+    <meta charset="UTF-8">
+    <!-- Codificação de caracteres, para acentos aparecerem certos -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ajusta a página à largura do celular -->
+    <title>Alpha Code - Login</title>
+    <!-- Texto da aba do navegador -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Adianta a conexão com o servidor de fontes -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Adianta a conexão com o servidor dos arquivos de fonte -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Carrega a fonte Inter -->
+    <link rel="stylesheet" href="estilizando.css">
+    <!-- Liga o HTML ao arquivo de estilo -->
+</head>
+<body>
+    <!-- Tudo que aparece na tela fica aqui -->
+    <div class="login-card">
+        <!-- Cartão central -->
+        <div class="brand-title">
+            <!-- Título da marca -->
+            <span class="alpha">Alpha</span>
+            <!-- Primeira linha, em branco -->
+            <span class="code">Code</span>
+            <!-- Segunda linha, em vermelho -->
+        </div>
+
+        <div class="subtitle">Gerenciador de tarefas profissional</div>
+        <!-- Frase abaixo do título -->
+
+        <nav class="tabs">
+            <!-- Abas para trocar entre login e cadastro -->
+            <a href="projeto.html" class="tab active">Entrar</a>
+            <!-- Aba atual -->
+            <a href="cadastro.html" class="tab">Cadastrar</a>
+            <!-- Leva para o cadastro -->
+        </nav>
+
+        <!-- O formulário não tem action: quem cuida do envio é o auth.js -->
+        <form id="form-login">
+            <!-- Formulário de login -->
+
+            <label for="email">Email</label>
+            <!-- Rótulo do campo de e-mail -->
+            <input type="email" id="email" placeholder="seu@email.com" required>
+            <!-- Campo de e-mail; o navegador confere o formato -->
+
+            <label for="senha">Senha</label>
+            <!-- Rótulo do campo de senha -->
+            <input type="password" id="senha" placeholder="*******" required>
+            <!-- Campo de senha; os caracteres ficam escondidos -->
+
+            <p id="aviso" class="aviso" hidden></p>
+            <!-- Mensagem de sucesso, por exemplo "Conta criada!" -->
+            <p id="erro" class="erro" hidden></p>
+            <!-- Mensagem de erro, por exemplo "E-mail ou senha incorretos." -->
+
+            <button type="submit">ENTRAR</button>
+            <!-- Envia o formulário -->
+        </form>
+
+        <div class="copyright">
+            <!-- Rodapé -->
+            &copy; 2024 Alpha Code. Todos os direitos reservados.
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <!-- Carrega a lógica de login e cadastro -->
+</body>
+</html>
